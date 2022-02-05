@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import matplotlib.pyplot as plt 
 from sklearn.neighbors import KNeighborsClassifier 
 titanic=sns.load_dataset('titanic')
 titanic.shape
@@ -22,6 +23,22 @@ def survie(model,pclass=3,sex=0,age=21):
     print(model.predict_proba(X)) #proba appartenance classe 0 ou 1
     print(model.predict(X)) #survived or no
 survie(model) 
+
+#prediction_titanic
+#meilleures nombres de voisins -- meilleures performances
+score=[]
+best_k=1
+best_score=0
+for k in range(best_k,30):
+    model=KNeighborsClassifier(n_neighbors=k)
+    model.fit(X,y)
+    score.append(model.score(X,y))
+    if best_score <model.score(X,y):
+        best_k=k
+        best_score=model.score(X,y)
+print(best_k)
+plt.plot(score)
+
 
 
 
