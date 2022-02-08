@@ -1,1 +1,1 @@
-# analyse_titianic_python_machine_learning
+# analyse_titianic
